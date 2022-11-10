@@ -2,13 +2,20 @@ grid = [[0,0,0],
         [0,0,0],
         [0,0,0]]
 
-game = 1
+game = True
 turn = 1
+count = 0
 
-while game == 1:
-    horizontal = int(input("Which column ")) - 1
-    vertical = int(input("Which row ")) - 1
-    grid[vertical][horizontal] = turn
+while game == True:
+    choice = True
+    while choice == True:
+        horizontal = int(input("Which column ")) - 1
+        vertical = int(input("Which row ")) - 1
+        if grid[vertical][horizontal] == 0:
+            grid[vertical][horizontal] = turn
+            choice = False
+        else:
+            print ("Invalid location")
 
     print (str(grid[0][0]) + "|" + str(grid[0][1]) + "|" + str(grid[0][2]))
     print ("-----")
@@ -18,15 +25,20 @@ while game == 1:
 
     if grid[vertical][0] == grid[vertical][1] and grid[vertical][0] == grid[vertical][2]:
         print (str(turn) + " wins!")
-        game = 0 
+        game = False 
     elif grid[0][horizontal] == grid[1][horizontal] and grid[0][horizontal] == grid[2][horizontal]:
         print (str(turn) + " wins!")
-        game = 0 
+        game = False
     elif grid[0][0] == grid[1][1] and grid[0][0] == grid[2][2] and grid[1][1] != 0:
         print (str(turn) + " wins!")
-        game = 0 
+        game = False
     elif grid[0][2] == grid[1][1] and grid[0][2] == grid[2][0] and grid[1][1] != 0:
         print (str(turn) + " wins!")
-        game = 0     
+        game = False 
+    
+    count += 1
+    if count == 9:
+        print ("it's a tie")
+        game = False
 
     turn *= -1
