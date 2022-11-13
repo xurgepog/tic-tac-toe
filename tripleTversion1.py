@@ -1,6 +1,10 @@
-grid = [[0,0,0],
-        [0,0,0],
-        [0,0,0]]
+class Boardsetup:
+    def __init__(self):
+        self.grid = [[0,0,0],
+                    [0,0,0],
+                    [0,0,0]]
+
+gameboard = Boardsetup()
 
 game = True
 turn = 1
@@ -11,28 +15,28 @@ while game == True:
     while choice == True:
         horizontal = int(input("Which column ")) - 1
         vertical = int(input("Which row ")) - 1
-        if grid[vertical][horizontal] == 0:
-            grid[vertical][horizontal] = turn
+        if gameboard.grid[vertical][horizontal] == 0:
+            gameboard.grid[vertical][horizontal] = turn
             choice = False
         else:
             print ("Invalid location")
 
-    print (str(grid[0][0]) + "|" + str(grid[0][1]) + "|" + str(grid[0][2]))
+    print (str(gameboard.grid[0][0]) + "|" + str(gameboard.grid[0][1]) + "|" + str(gameboard.grid[0][2]))
     print ("-----")
-    print (str(grid[1][0]) + "|" + str(grid[1][1]) + "|" + str(grid[1][2]))
+    print (str(gameboard.grid[1][0]) + "|" + str(gameboard.grid[1][1]) + "|" + str(gameboard.grid[1][2]))
     print ("-----")
-    print (str(grid[2][0]) + "|" + str(grid[2][1]) + "|" + str(grid[2][2]))
+    print (str(gameboard.grid[2][0]) + "|" + str(gameboard.grid[2][1]) + "|" + str(gameboard.grid[2][2]))
 
-    if grid[vertical][0] == grid[vertical][1] and grid[vertical][0] == grid[vertical][2]:
+    if gameboard.grid[vertical][0] == gameboard.grid[vertical][1] and gameboard.grid[vertical][0] == gameboard.grid[vertical][2]:
         print (str(turn) + " wins!")
         game = False 
-    elif grid[0][horizontal] == grid[1][horizontal] and grid[0][horizontal] == grid[2][horizontal]:
+    elif gameboard.grid[0][horizontal] == gameboard.grid[1][horizontal] and gameboard.grid[0][horizontal] == gameboard.grid[2][horizontal]:
         print (str(turn) + " wins!")
         game = False
-    elif grid[0][0] == grid[1][1] and grid[0][0] == grid[2][2] and grid[1][1] != 0:
+    elif gameboard.grid[0][0] == gameboard.grid[1][1] and gameboard.grid[0][0] == gameboard.grid[2][2] and gameboard.grid[1][1] != 0:
         print (str(turn) + " wins!")
         game = False
-    elif grid[0][2] == grid[1][1] and grid[0][2] == grid[2][0] and grid[1][1] != 0:
+    elif gameboard.grid[0][2] == gameboard.grid[1][1] and gameboard.grid[0][2] == gameboard.grid[2][0] and gameboard.grid[1][1] != 0:
         print (str(turn) + " wins!")
         game = False 
     
