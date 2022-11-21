@@ -1,3 +1,5 @@
+import random
+import time
 class Boardsetup:
     def __init__(self):
         self.grid = [[0,0,0],
@@ -10,16 +12,29 @@ game = True
 turn = 1
 count = 0
 
+players = input("1 player or 2 player? ")
+players = int(players)
+
 while game == True:
     choice = True
     while choice == True:
-        horizontal = int(input("Which column ")) - 1
-        vertical = int(input("Which row ")) - 1
-        if gameboard.grid[vertical][horizontal] == 0:
-            gameboard.grid[vertical][horizontal] = turn
-            choice = False
-        else:
-            print ("Invalid location")
+        if players == 2 or players == 1 and turn == -1:
+            horizontal = int(input("Which column ")) - 1
+            vertical = int(input("Which row ")) - 1
+            if gameboard.grid[vertical][horizontal] == 0:
+                gameboard.grid[vertical][horizontal] = turn
+                choice = False
+            else:
+                print ("Invalid location")
+        elif players == 1 and turn == 1:
+            horizontal = random.randint(0,2)
+            vertical = random.randint(0,2)
+            if gameboard.grid[vertical][horizontal] == 0:
+                    gameboard.grid[vertical][horizontal] = turn
+                    print ("thinking...")
+                    time.sleep(1)
+                    choice = False
+            
 
     print (str(gameboard.grid[0][0]) + "|" + str(gameboard.grid[0][1]) + "|" + str(gameboard.grid[0][2]))
     print ("-----")
