@@ -70,5 +70,5 @@ def tictactoe():
 while running == True:
     tictactoe()
     again = input("Want to play again?")
-    if again in ('No','n','N',"no"):
+    if again.lower() in ('no','n'):
         running = False
